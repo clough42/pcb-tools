@@ -19,17 +19,18 @@ public class DesignatorTest {
     assertThat(ret).isNotNull();
     assertThat(ret.toString()).isEqualTo("Q1");
   }
-  
+
   @Test
   public void testBaseOffset() {
     Designator d = Designator.parse("R23");
     Designator ret = d.offset(1000);
-    
+
     assertThat(ret.toString()).isEqualTo("R1023");
   }
-  
-  @Test(expected=IllegalArgumentException.class)
+
+  @Test(expected = IllegalArgumentException.class)
   public void testBadParse() {
     Designator.parse("ABA");
   }
+
 }
