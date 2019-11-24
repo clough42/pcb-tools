@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class PanelizerTest {
-  
+
   private Panelizer uut;
   private TestFiles testFiles;
 
@@ -17,16 +17,16 @@ public class PanelizerTest {
     testFiles = new TestFiles();
     uut = new Panelizer();
   }
-  
+
   @After
   public void tearDown() throws IOException {
     testFiles.cleanUp();
   }
-  
+
   @Test
   public void testHappyDay() throws IOException {
     testFiles.OUTPUT_DIR.mkdir();
-    
+
     uut.panelize(
       testFiles.SAMPLE_BOM,
       testFiles.SAMPLE_PICK_PLACE,

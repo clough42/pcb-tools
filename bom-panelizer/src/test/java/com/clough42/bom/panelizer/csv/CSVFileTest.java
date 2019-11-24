@@ -5,8 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,18 +59,18 @@ public class CSVFileTest {
     for (Row row : uut) {
       count++;
     }
-    
+
     assertThat(count).isGreaterThan(5);
   }
-  
+
   @Test
   public void testSave() throws IOException {
     CSVFile uut = CSVFile.load(testFiles.SAMPLE_BOM);
     testFiles.OUTPUT_DIR.mkdir();
     assertThat(testFiles.OUTPUT_BOM.exists()).isFalse();
-    
+
     uut.save(testFiles.OUTPUT_BOM);
-    
+
     assertThat(testFiles.OUTPUT_BOM.exists()).isTrue();
   }
 
