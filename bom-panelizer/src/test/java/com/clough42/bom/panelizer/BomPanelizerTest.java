@@ -35,14 +35,14 @@ public class BomPanelizerTest {
   }
 
   @Test
-  public void executeMainNoArgs() {
+  public void executeMainNoArgs() throws IOException {
     BomPanelizer.main(null);
 
     verify(mockPanelizer, never()).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
   }
 
   @Test
-  public void executeMainWithArgs() {
+  public void executeMainWithArgs() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
       "-c", testFiles.SAMPLE_PICK_PLACE_FILENAME,
@@ -53,7 +53,7 @@ public class BomPanelizerTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void executeMainWithBadBomFile() {
+  public void executeMainWithBadBomFile() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME + "X",
       "-c", testFiles.SAMPLE_PICK_PLACE_FILENAME,
@@ -64,7 +64,7 @@ public class BomPanelizerTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void executeMainWithBadCentroidFile() {
+  public void executeMainWithBadCentroidFile() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
       "-c", testFiles.SAMPLE_PICK_PLACE_FILENAME + "X",
@@ -75,7 +75,7 @@ public class BomPanelizerTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void executeMainWithBadPanelFile() {
+  public void executeMainWithBadPanelFile() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
       "-c", testFiles.SAMPLE_PICK_PLACE_FILENAME,
@@ -86,7 +86,7 @@ public class BomPanelizerTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void executeMainWithBadOutputDirectory() {
+  public void executeMainWithBadOutputDirectory() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
       "-c", testFiles.SAMPLE_PICK_PLACE_FILENAME,

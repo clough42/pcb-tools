@@ -24,7 +24,7 @@ public class PanelizerTest {
   }
   
   @Test
-  public void testHappyDay() {
+  public void testHappyDay() throws IOException {
     uut.panelize(
       testFiles.SAMPLE_BOM,
       testFiles.SAMPLE_PICK_PLACE,

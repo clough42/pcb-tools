@@ -4,6 +4,7 @@ import com.clough42.bom.panelizer.panelizer.Panelizer;
 import org.apache.commons.cli.*;
 
 import java.io.File;
+import java.io.IOException;
 
 public class BomPanelizer {
   
@@ -61,6 +62,9 @@ public class BomPanelizer {
       System.out.println(e.getMessage());
       HelpFormatter formatter = new HelpFormatter();
       formatter.printHelp("bom-panelizer", options);
+    }
+    catch(IOException e ) {
+      System.out.println(e.getMessage());
     }
   }
   
