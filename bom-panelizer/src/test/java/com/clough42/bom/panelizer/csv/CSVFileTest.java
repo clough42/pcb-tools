@@ -39,16 +39,16 @@ public class CSVFileTest {
     assertThat(uut.getColumns().get(3).getName()).isEqualTo("LCSC Part #");
     assertThat(uut.getColumns().get(3).getType()).isEqualTo(Column.Type.Text);
 
-    assertThat(uut.getRows().size()).isEqualTo(16);
+    assertThat(uut.size()).isEqualTo(16);
 
-    assertThat(uut.getRows().get(0).get(0).toString()).isEqualTo("10k");
-    assertThat(uut.getRows().get(0).get(0).getColumn().getType()).isEqualTo(Column.Type.Text);
-    assertThat(uut.getRows().get(0).get(1).toString()).isEqualTo("R1, R2, R3, R4, R5, R6, R10, R11");
-    assertThat(uut.getRows().get(0).get(1).getColumn().getType()).isEqualTo(Column.Type.Designator);
-    assertThat(uut.getRows().get(0).get(2).toString()).isEqualTo("RESC1609X50X30NL10T20");
-    assertThat(uut.getRows().get(0).get(2).getColumn().getType()).isEqualTo(Column.Type.Text);
-    assertThat(uut.getRows().get(0).get(3).toString()).isEqualTo("C25804");
-    assertThat(uut.getRows().get(0).get(3).getColumn().getType()).isEqualTo(Column.Type.Text);
+    assertThat(uut.get(0).get(0).toString()).isEqualTo("10k");
+    assertThat(uut.get(0).get(0).getColumn().getType()).isEqualTo(Column.Type.Text);
+    assertThat(uut.get(0).get(1).toString()).isEqualTo("R1, R2, R3, R4, R5, R6, R10, R11");
+    assertThat(uut.get(0).get(1).getColumn().getType()).isEqualTo(Column.Type.Designator);
+    assertThat(uut.get(0).get(2).toString()).isEqualTo("RESC1609X50X30NL10T20");
+    assertThat(uut.get(0).get(2).getColumn().getType()).isEqualTo(Column.Type.Text);
+    assertThat(uut.get(0).get(3).toString()).isEqualTo("C25804");
+    assertThat(uut.get(0).get(3).getColumn().getType()).isEqualTo(Column.Type.Text);
   }
 
   @Test

@@ -7,22 +7,18 @@ import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class CSVFile implements Iterable<Row> {
+public class CSVFile extends ArrayList<Row> {
 
   private List<Column> columns;
-  private List<Row> rows;
 
   private CSVFile(CSVParser parser) {
-    rows = new ArrayList<>();
-
     for (CSVRecord record : parser) {
       if (columns == null) {
         columns = readColumns(record);
       } else {
-        rows.add(readRow(record));
+        add(readRow(record));
       }
     }
   }
@@ -72,12 +68,7 @@ public class CSVFile implements Iterable<Row> {
     return columns;
   }
 
-  public List<Row> getRows() {
-    return rows;
-  }
-
-  @Override
-  public Iterator<Row> iterator() {
-    return getRows().iterator();
+  public CSVFile derive() {
+    return null;
   }
 }
