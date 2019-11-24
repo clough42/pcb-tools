@@ -20,6 +20,7 @@ public class Panelizer {
     
     CSVFile inputBom = CSVFile.load(bomFile);
     CSVFile inputCentroid = CSVFile.load(centroidFile);
+    CSVFile panel = CSVFile.load(panelFile);
     
     inputBom.save(outputBomFile);
     inputCentroid.save(outputCentroidFile);

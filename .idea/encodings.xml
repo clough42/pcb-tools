@@ -2,5 +2,8 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$/bom-panelizer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bom-panelizer/src/test/resources/sample-bom.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/bom-panelizer/src/test/resources/sample-pick-place.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/bom-panelizer/target/test-classes/sample-bom.csv" charset="windows-1252" />
   </component>
 </project>
