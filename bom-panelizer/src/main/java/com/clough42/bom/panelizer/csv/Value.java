@@ -1,9 +1,8 @@
 package com.clough42.bom.panelizer.csv;
 
-import com.clough42.bom.panelizer.panelizer.BoardLocation;
+import com.clough42.bom.panelizer.panelizer.BoardInstance;
 import com.clough42.bom.panelizer.panelizer.PanelDescription;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -70,10 +69,26 @@ public class Value {
     DesignatorList oldList = getDesignatorList();
     DesignatorList newList = new DesignatorList();
     
-    for(BoardLocation instance: panel) {
+    for(BoardInstance instance: panel) {
       newList.addAll(oldList.offset(instance.getBase()));
     }
     
     return new Value(getColumn(),newList.toString());
+  }
+
+  public Value offsetBomDesignator(BoardInstance instance) {
+    DesignatorList oldDesignator = getDesignatorList();
+    DesignatorList newList = new DesignatorList();
+
+    newList.addAll(oldDesignator.offset(instance.getBase()));
+
+    return new Value(getColumn(),newList.toString());
+  }
+
+  public Value offsetValue(double x) {
+    Double val = getDoubleValue();
+    val += x;
+    String newValue = String.format("%.3f",val) + getUnit();
+    return Value.parse(newValue, getColumn());
   }
 }

@@ -3,7 +3,7 @@ package com.clough42.bom.panelizer.panelizer;
 import com.clough42.bom.panelizer.csv.Row;
 import com.clough42.bom.panelizer.csv.Value;
 
-public class BoardLocation {
+public class BoardInstance {
 
   private static final String DESIGNATOR_BASE = "DesignatorBase";
   private static final String OFFSET_X = "Offset X";
@@ -13,13 +13,13 @@ public class BoardLocation {
   private double x;
   private double y;
 
-  private BoardLocation(int base, double x, double y) {
+  private BoardInstance(int base, double x, double y) {
     this.base = base;
     this.x = x;
     this.y = y;
   }
 
-  public static BoardLocation fromRow(Row row) {
+  public static BoardInstance fromRow(Row row) {
     Integer base = null;
     Double x = null;
     Double y = null;
@@ -47,7 +47,7 @@ public class BoardLocation {
       throw new IllegalArgumentException("Missing Y offset in row: " + row);
     }
 
-    return new BoardLocation(base, x, y);
+    return new BoardInstance(base, x, y);
   }
 
   public int getBase() {

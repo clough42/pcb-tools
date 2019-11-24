@@ -29,7 +29,7 @@ public class PanelDescriptionTest {
   public void testAllRows() {
     int count = 0;
 
-    for (BoardLocation location : uut) {
+    for (BoardInstance location : uut) {
       assertThat(location.getBase()).isGreaterThan(900);
       assertThat(location.getX()).isGreaterThanOrEqualTo(0);
       assertThat(location.getY()).isGreaterThanOrEqualTo(0);

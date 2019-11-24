@@ -7,11 +7,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class PanelDescription extends ArrayList<BoardLocation> {
+public class PanelDescription extends ArrayList<BoardInstance> {
 
   private PanelDescription(CSVFile csv) {
     for (Row row : csv) {
-      add(BoardLocation.fromRow(row));
+      add(BoardInstance.fromRow(row));
     }
   }
 
