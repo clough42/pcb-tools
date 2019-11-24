@@ -12,6 +12,10 @@ import java.util.List;
 public class CSVFile extends ArrayList<Row> {
 
   private List<Column> columns;
+  
+  private CSVFile(List<Column> columns) {
+    this.columns = columns;
+  }
 
   private CSVFile(CSVParser parser) {
     for (CSVRecord record : parser) {
@@ -69,6 +73,6 @@ public class CSVFile extends ArrayList<Row> {
   }
 
   public CSVFile derive() {
-    return null;
+    return new CSVFile(getColumns());
   }
 }

@@ -1,5 +1,9 @@
 package com.clough42.bom.panelizer.csv;
 
+import com.clough42.bom.panelizer.panelizer.BoardLocation;
+import com.clough42.bom.panelizer.panelizer.PanelDescription;
+
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -56,5 +60,20 @@ public class Value {
       unit = matcher.group("unit");
     }
     return unit;
+  }
+  
+  public DesignatorList getDesignatorList() {
+    return DesignatorList.parse(text);
+  }
+
+  public Value offsetBomDesignators(PanelDescription panel) {
+    DesignatorList oldList = getDesignatorList();
+    DesignatorList newList = new DesignatorList();
+    
+    for(BoardLocation instance: panel) {
+      newList.addAll(oldList.offset(instance.getBase()));
+    }
+    
+    return new Value(getColumn(),newList.toString());
   }
 }

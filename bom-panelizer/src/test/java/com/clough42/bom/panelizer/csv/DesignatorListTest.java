@@ -33,12 +33,12 @@ public class DesignatorListTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testBadList() {
-    DesignatorList.parse("R1R2R3");
+    DesignatorList.parse("R1R2:R3");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testBadList2() {
-    DesignatorList.parse("R1,R2R3");
+    DesignatorList.parse("R1,R2:R3");
   }
 
   @Test(expected = IllegalArgumentException.class)

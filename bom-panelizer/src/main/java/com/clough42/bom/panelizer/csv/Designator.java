@@ -8,7 +8,7 @@ public class Designator {
   private static final String LETTER = "letter";
   private static final String NUMBER = "number";
 
-  private static final String DESIGNATOR_REGEX = "^(?<" + LETTER + ">[A-Za-z])(?<" + NUMBER + ">[0-9]+)$";
+  private static final String DESIGNATOR_REGEX = "^(?<" + LETTER + ">[A-Za-z0-9]*[A-Za-z])(?<" + NUMBER + ">[0-9]+)$";
   private static final Pattern regex = Pattern.compile(DESIGNATOR_REGEX);
 
   private String letter;

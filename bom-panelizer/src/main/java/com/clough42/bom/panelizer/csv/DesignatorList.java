@@ -33,6 +33,5 @@ public class DesignatorList extends ArrayList<Designator> {
     return this.stream()
       .map(x -> x.offset(offset))
       .collect(Collectors.toCollection(DesignatorList::new));
-
   }
 }
