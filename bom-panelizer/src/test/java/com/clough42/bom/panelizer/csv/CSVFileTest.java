@@ -1,23 +1,33 @@
 package com.clough42.bom.panelizer.csv;
 
+import com.clough42.bom.panelizer.TestFiles;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BomFileTest {
+public class CSVFileTest {
+
+  private TestFiles testFiles;
+
+  @Before
+  public void setUp() throws IOException {
+    testFiles = new TestFiles();
+  }
+
+  @After
+  public void tearDown() throws IOException {
+    testFiles.cleanUp();
+  }
 
   @Test
   public void loadSampleBom() throws Exception {
-    ClassLoader classLoader = getClass().getClassLoader();
-    URL url = classLoader.getResource("sample-bom.csv");
-    InputStream resourceAsStream = classLoader.getResourceAsStream("sample-bom.csv");
-    assertThat(resourceAsStream).isNotNull();
-    
-    BomFile uut = BomFile.load(new InputStreamReader(resourceAsStream));
+    CSVFile uut = CSVFile.load(testFiles.SAMPLE_BOM);
 
     assertThat(uut.getColumns()).isNotNull().isNotEmpty();
     assertThat(uut.getColumns().size()).isEqualTo(4);
@@ -41,6 +51,29 @@ public class BomFileTest {
     assertThat(uut.getRows().get(0).get(2).getColumn().getType()).isEqualTo(Column.Type.Text);
     assertThat(uut.getRows().get(0).get(3).toString()).isEqualTo("C25804");
     assertThat(uut.getRows().get(0).get(3).getColumn().getType()).isEqualTo(Column.Type.Text);
+  }
+
+  @Test
+  public void testIterator() throws Exception {
+    CSVFile uut = CSVFile.load(testFiles.SAMPLE_BOM);
+
+    int count = 0;
+    for (Row row : uut) {
+      count++;
+    }
+    
+    assertThat(count).isGreaterThan(5);
+  }
+  
+  @Test
+  public void testSave() throws IOException {
+    CSVFile uut = CSVFile.load(testFiles.SAMPLE_BOM);
+    testFiles.OUTPUT_DIR.mkdir();
+    assertThat(testFiles.OUTPUT_BOM.exists()).isFalse();
+    
+    uut.save(testFiles.OUTPUT_BOM);
+    
+    assertThat(testFiles.OUTPUT_BOM.exists()).isTrue();
   }
 
 }

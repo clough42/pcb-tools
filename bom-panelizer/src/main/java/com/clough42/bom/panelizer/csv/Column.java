@@ -44,4 +44,8 @@ public class Column {
     return type;
   }
 
+  @Override
+  public String toString() {
+    return name;
+  }
 }

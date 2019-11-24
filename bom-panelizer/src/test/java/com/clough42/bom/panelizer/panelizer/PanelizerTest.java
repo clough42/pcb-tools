@@ -25,6 +25,8 @@ public class PanelizerTest {
   
   @Test
   public void testHappyDay() throws IOException {
+    testFiles.OUTPUT_DIR.mkdir();
+    
     uut.panelize(
       testFiles.SAMPLE_BOM,
       testFiles.SAMPLE_PICK_PLACE,

@@ -1,9 +1,8 @@
 package com.clough42.bom.panelizer.panelizer;
 
-import com.clough42.bom.panelizer.csv.BomFile;
+import com.clough42.bom.panelizer.csv.CSVFile;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -19,8 +18,11 @@ public class Panelizer {
     System.out.println("outputBomFile: " + outputBomFile.getAbsolutePath());
     System.out.println("outputCentroidFile: " + outputCentroidFile.getAbsolutePath());
     
-    BomFile inputBom = BomFile.load(new FileReader(bomFile));
-    BomFile inputCentroid = BomFile.load(new FileReader(centroidFile));
+    CSVFile inputBom = CSVFile.load(bomFile);
+    CSVFile inputCentroid = CSVFile.load(centroidFile);
+    
+    inputBom.save(outputBomFile);
+    inputCentroid.save(outputCentroidFile);
   }
   
 }
