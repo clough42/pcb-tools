@@ -14,7 +14,9 @@ pipeline {
             sh 'cp LICENSE archive/'
             sh 'mkdir archive/samples'
             sh 'cp bom-panelizer/src/text/resources/sample-*.csv archive/samples/'
-            zip zipFile: 'pcb-tools.zip', archive: true, dir: 'archive'
+            script {
+                zip zipFile: 'pcb-tools.zip', archive: true, dir: 'archive'
+            }
         }
     }
   }
