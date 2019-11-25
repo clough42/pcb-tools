@@ -24,7 +24,7 @@ pipeline {
   }
   post {
     always {
-        archiveArtifacts artifacts: '**/*.jar pcb-tools.zip', fingerprint: true
+        archiveArtifacts artifacts: '**/*.jar' 'pcb-tools.zip', fingerprint: true
         junit '**/surefire-reports/*.xml'
         
     }
