@@ -52,7 +52,7 @@ public class BomPanelizerTest {
     verify(mockPanelizer).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void executeMainWithBadBomFile() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME + "X",
@@ -60,10 +60,10 @@ public class BomPanelizerTest {
       "-p", testFiles.SAMPLE_PANEL_FILENAME,
       "-o", testFiles.OUTPUT_DIR_NAME
     });
-    verify(mockPanelizer).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
+    verify(mockPanelizer, never()).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void executeMainWithBadCentroidFile() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
@@ -71,10 +71,10 @@ public class BomPanelizerTest {
       "-p", testFiles.SAMPLE_PANEL_FILENAME,
       "-o", testFiles.OUTPUT_DIR_NAME
     });
-    verify(mockPanelizer).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
+    verify(mockPanelizer, never()).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void executeMainWithBadPanelFile() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
@@ -82,10 +82,10 @@ public class BomPanelizerTest {
       "-p", testFiles.SAMPLE_PANEL_FILENAME + "X",
       "-o", testFiles.OUTPUT_DIR_NAME
     });
-    verify(mockPanelizer).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
+    verify(mockPanelizer, never()).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void executeMainWithBadOutputDirectory() throws IOException {
     BomPanelizer.main(new String[]{
       "-b", testFiles.SAMPLE_BOM_FILENAME,
@@ -93,6 +93,6 @@ public class BomPanelizerTest {
       "-p", testFiles.SAMPLE_PANEL_FILENAME,
       "-o", "ZZZ:/notreal"
     });
-    verify(mockPanelizer).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
+    verify(mockPanelizer, never()).panelize(any(File.class), any(File.class), any(File.class), any(File.class), any(File.class));
   }
 }

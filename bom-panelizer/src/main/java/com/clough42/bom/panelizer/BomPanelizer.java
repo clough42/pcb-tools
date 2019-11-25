@@ -66,12 +66,10 @@ public class BomPanelizer {
       System.out.println("----------------------------------------------------------------------");
       
       panelizer.panelize(bomFile, centroidFile, panelFile, outputBomFile, outputCentroidFile);
-    } catch (ParseException e) {
-      System.out.println(e.getMessage());
+    } catch (ParseException | IOException | IllegalArgumentException e) {
+      System.out.println("ERROR: " + e.getMessage());
       HelpFormatter formatter = new HelpFormatter();
       formatter.printHelp("bom-panelizer", options);
-    } catch (IOException | IllegalArgumentException e) {
-      System.out.println(e.getMessage());
     }
   }
 
