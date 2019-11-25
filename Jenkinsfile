@@ -17,14 +17,13 @@ pipeline {
             sh 'mkdir archive/samples'
             sh 'cp bom-panelizer/src/test/resources/sample-*.csv archive/samples/'
             script {
-                zip zipFile: 'pcb-tools.zip', archive: false, dir: 'archive'
+                zip zipFile: 'pcb-tools.zip', archive: true, dir: 'archive'
             }
         }
     }
   }
   post {
     always {
-        archiveArtifacts artifacts: '**/pcb-tools.zip', fingerprint: true
         junit '**/surefire-reports/*.xml'
     }
   }
