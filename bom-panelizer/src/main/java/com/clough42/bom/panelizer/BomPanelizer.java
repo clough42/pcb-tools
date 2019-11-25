@@ -70,7 +70,7 @@ public class BomPanelizer {
       System.out.println(e.getMessage());
       HelpFormatter formatter = new HelpFormatter();
       formatter.printHelp("bom-panelizer", options);
-    } catch (IOException e) {
+    } catch (IOException | IllegalArgumentException e) {
       System.out.println(e.getMessage());
     }
   }
