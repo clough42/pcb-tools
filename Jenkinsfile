@@ -8,6 +8,7 @@ pipeline {
     }
     stage('Package Release') {
         steps {
+            sh 'rm -rf archive'
             sh 'mkdir archive'
             sh 'cp bom-panelizer/target/bom-panelizer-1.0-SNAPSHOT-jar-with-dependencies.jar archive/bom-panelizer.jar'
             sh 'cp README.md archive/'
