@@ -9,7 +9,10 @@ import java.util.ArrayList;
 
 public class PanelDescription extends ArrayList<BoardInstance> {
 
-  private PanelDescription(CSVFile csv) {
+  public PanelDescription() {
+  }
+
+  PanelDescription(CSVFile csv) {
     for (Row row : csv) {
       add(BoardInstance.fromRow(row));
     }

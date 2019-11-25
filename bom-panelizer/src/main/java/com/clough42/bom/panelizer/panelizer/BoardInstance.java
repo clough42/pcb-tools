@@ -13,7 +13,7 @@ public class BoardInstance {
   private double x;
   private double y;
 
-  private BoardInstance(int base, double x, double y) {
+  public BoardInstance(int base, double x, double y) {
     this.base = base;
     this.x = x;
     this.y = y;

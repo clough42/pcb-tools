@@ -74,4 +74,13 @@ public class CSVFileTest {
     assertThat(testFiles.OUTPUT_BOM.exists()).isTrue();
   }
 
+  @Test
+  public void testDerive() throws IOException {
+    CSVFile uut = CSVFile.load(testFiles.SAMPLE_BOM);
+
+    CSVFile ret = uut.derive();
+
+    assertThat(ret.getColumns()).isEqualTo(uut.getColumns());
+  }
+
 }
