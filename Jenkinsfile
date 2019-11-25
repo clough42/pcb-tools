@@ -16,6 +16,7 @@ pipeline {
             sh 'cp LICENSE archive/'
             sh 'mkdir archive/samples'
             sh 'cp bom-panelizer/src/test/resources/sample-*.csv archive/samples/'
+            sh 'cp etc/scripts/bom-panelizer.bat archive/'
             script {
                 zip zipFile: 'pcb-tools.zip', archive: true, dir: 'archive'
             }
